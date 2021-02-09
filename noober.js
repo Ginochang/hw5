@@ -69,5 +69,85 @@ function renderRides(ridesArray) {
 
 window.addEventListener('DOMContentLoaded', function() {
   // YOUR CODE
+  let url = 'https://kiei451.com/api/rides.json'
+
+  let allFilter = document.querySelector('#all-filter')
+  
+  allFilter.addEventListener('click', async function(event){
+    event.preventDefault()
+
+    let response = await fetch(url)
+    let json = await response.json()
+    renderRides(json)
+  })
+  
+  let nooberPool = document.querySelector('#noober-pool-filter')
+
+  nooberPool.addEventListener('click', async function(event){
+    event.preventDefault()
+
+    let response = await fetch(url)
+    let json = await response.json()
+    
+    let nooberNewPool = []
+    for ( i = 0; i < json.length; i++) {
+      if(levelOfService(json[i]) == 'Noober Pool') {
+        nooberNewPool.push(json[i])
+      }
+    }
+    renderRides(nooberNewPool)
+  })
+
+  let nooberPurple = document.querySelector('#noober-purple-filter')
+
+  nooberPurple.addEventListener('click', async function(event){
+    event.preventDefault()
+
+    let response = await fetch(url)
+    let json = await response.json()
+    
+    let nooberNewPurple = []
+    for ( i = 0; i < json.length; i++) {
+      if(levelOfService(json[i]) == 'Noober Purple') {
+        nooberNewPurple.push(json[i])
+      }
+    }
+    renderRides(nooberNewPurple)
+  })
+
+  let nooberXl = document.querySelector('#noober-xl-filter')
+
+  nooberXl.addEventListener('click', async function(event){
+    event.preventDefault()
+
+    let response = await fetch(url)
+    let json = await response.json()
+    
+    let nooberNewXl = []
+    for ( i = 0; i < json.length; i++) {
+      if(levelOfService(json[i]) == 'Noober XL') {
+        nooberNewXl.push(json[i])
+      }
+    }
+    renderRides(nooberNewXl)
+  })
+
+  let nooberX = document.querySelector('#noober-x-filter')
+
+  nooberX.addEventListener('click', async function(event){
+    event.preventDefault()
+
+    let response = await fetch(url)
+    let json = await response.json()
+    
+    let nooberNewX = []
+    for ( i = 0; i < json.length; i++) {
+      if(levelOfService(json[i]) == 'Noober X') {
+        nooberNewX.push(json[i])
+      }
+    }
+    renderRides(nooberNewX)
+
 })
 
+})
